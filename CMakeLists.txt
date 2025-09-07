@@ -6,11 +6,11 @@ add_library(${MODULE_NAME} STATIC
 )
 
 ##### For testing only! These must be commented out when pushing on Git.
-add_subdirectory(lib/zipslib)
+#add_subdirectory(lib/zipslib)
 
-target_include_directories(${MODULE_NAME} PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}/include
-)
+#target_include_directories(${MODULE_NAME} PUBLIC
+#    ${CMAKE_CURRENT_LIST_DIR}/include
+#)
 ##### End testing only
 
 add_subdirectory(lib/fatfs/FatFs_SPI)
