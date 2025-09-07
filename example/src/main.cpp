@@ -1,4 +1,4 @@
-#include <TemplateModule.h>
+#include <SDCardModule.h>
 
 #include <pico/stdlib.h>
 #include <stdio.h>
@@ -10,8 +10,19 @@ int main()
     
     printf("Program Start\n");
 
-    uazips::TemplateModule mod;
-    mod.Initialize();
+    uazips::SDCardModule::PinSetup pins = {2,3,4,5};
+
+    uazips::SDCardModule mod("A", pins);
+
+    uazips::Module::InitAll();
+
+    mod.Mount();
+
+    mod.OpenFile("HelloWorld.txt");
+
+    mod.WriteString("Hello");
+
+    mod.Close();
 
     printf("Program End\n");
 

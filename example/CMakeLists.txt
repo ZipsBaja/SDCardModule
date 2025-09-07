@@ -7,6 +7,8 @@ set(PICO_BOARD pico)
 set(PICO_PLATFORM rp2040)
 # set(PICO_PLATFORM rp2350-arm-s)
 
+add_compile_definitions(USING_PICO)
+
 include($ENV{PICO_SDK_PATH}/pico_sdk_init.cmake)
 
 set(C_STANDARD 17)
@@ -21,7 +23,7 @@ add_subdirectory(../ build)
 add_executable(Example src/main.cpp)
 
 target_link_libraries(Example
-    ZipsTemplateModule
+    ZipsSDCardModule
     pico_stdlib
 )
 
