@@ -26,6 +26,7 @@ namespace uazips
         sd_card_t* m_sd_card;
         spi_t* m_spi;
         const char* sys_name;
+        spi_inst_t* spi_instance;
         PinSetup pins;
         FRESULT m_result;
         FIL m_file;
@@ -33,7 +34,7 @@ namespace uazips
         bool is_file_open;
 
     public:
-        SDCardModule(const char* sys_name, const PinSetup& pins);
+        SDCardModule(const char* sys_name, spi_inst_t* spi_instance, const PinSetup& pins);
         virtual ~SDCardModule();
 
         virtual bool Initialize() override;

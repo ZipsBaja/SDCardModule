@@ -10,7 +10,7 @@ namespace uazips
     std::vector<sd_card_t*> SDCardModule::SDCards = {};
     std::vector<spi_t*> SDCardModule::SPIs = {};
 
-    SDCardModule::SDCardModule(const char* sys_name, const PinSetup& pins) : Module(), sys_name(sys_name), pins(pins), current_file_name(""), is_file_open(0)
+    SDCardModule::SDCardModule(const char* sys_name, spi_inst_t* spi_instance, const PinSetup& pins) : Module(), sys_name(sys_name), spi_instance(spi_instance), pins(pins), current_file_name(""), is_file_open(0)
     {
     }
 
@@ -43,6 +43,7 @@ namespace uazips
         memset(m_sd_card, 0, sizeof(sd_card_t));
         memset(m_spi, 0, sizeof(spi_t));
 
+        m_spi->hw_inst = spi_instance;
         m_spi->sck_gpio = pins.sclk;
         m_spi->mosi_gpio = pins.mosi;
         m_spi->miso_gpio = pins.miso;
